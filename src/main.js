@@ -7,8 +7,8 @@ let config = {
     render: {
         pixelArt: true
     },
-    width: 320,
-    height: 240,
+    width: 640,
+    height: 480,
     physics: {
         default: "arcade",
         arcade: {
