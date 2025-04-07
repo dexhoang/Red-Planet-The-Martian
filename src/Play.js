@@ -40,6 +40,12 @@ class Play extends Phaser.Scene {
 
         //input
         this.cursors = this.input.keyboard.createCursorKeys()
+        this.extrakeys = this.input.keyboard.addKeys({
+            W: Phaser.Input.Keyboard.KeyCodes.W,
+            A: Phaser.Input.Keyboard.KeyCodes.A,
+            S: Phaser.Input.Keyboard.KeyCodes.S,
+            D: Phaser.Input.Keyboard.KeyCodes.D
+        })
 
         //physics
         this.physics.add.collider(this.player, bgLayer)
@@ -48,15 +54,15 @@ class Play extends Phaser.Scene {
     update() {
 
         this.direction = new Phaser.Math.Vector2(0)
-        if(this.cursors.left.isDown) {
+        if(this.cursors.left.isDown || this.extrakeys.A.isDown) {
             this.direction.x = -1
-        } else if(this.cursors.right.isDown) {
+        } else if(this.cursors.right.isDown || this.extrakeys.D.isDown) {
             this.direction.x = 1
         }
 
-        if(this.cursors.up.isDown) {
+        if(this.cursors.up.isDown || this.extrakeys.W.isDown) {
             this.direction.y = -1
-        } else if(this.cursors.down.isDown) {
+        } else if(this.cursors.down.isDown || this.extrakeys.S.isDown) {
             this.direction.y = 1
         }
 
