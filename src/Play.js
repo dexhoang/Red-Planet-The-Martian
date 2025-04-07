@@ -19,14 +19,19 @@ class Play extends Phaser.Scene {
     }
 
     create() {
+        //map
         const map = this.add.tilemap('tilemapJSON')
         const tileset = map.addTilesetImage('tiles1', 'tileSetImage')
         const bgLayer = map.createLayer('Tile Layer 1', tileset, 0, 0)
+        //map collisions
+        bgLayer.setCollisionByProperty({collides: true})
 
         //player
         const playerSpawn = map.findObject('Spawns', (obj) => obj.name === 'spawn')
         this.player = this.physics.add.sprite(playerSpawn.x, playerSpawn.y, 'player', 0)
         this.player.body.setCollideWorldBounds(true)
+        this.player.body.setSize(30, 50)
+        this.player.body.offset.y = 12
 
         //camera
         this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels)
@@ -35,6 +40,9 @@ class Play extends Phaser.Scene {
 
         //input
         this.cursors = this.input.keyboard.createCursorKeys()
+
+        //physics
+        this.physics.add.collider(this.player, bgLayer)
     }
 
     update() {
