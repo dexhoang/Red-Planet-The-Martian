@@ -1,14 +1,10 @@
-// Code Practice: Slime World
-// Name: Dexter Hoang
-// Date: 02/16/2024
-
 let config = {
     type: Phaser.AUTO,
     render: {
         pixelArt: true
     },
-    width: 640,
-    height: 480,
+    width: 320,
+    height: 240,
     physics: {
         default: "arcade",
         arcade: {
@@ -16,7 +12,7 @@ let config = {
         }
     },
     zoom: 2,
-    scene: [ Menu, Play ]
+    scene: [ Load, Menu, Play ]
 }
 
 const game = new Phaser.Game(config)
