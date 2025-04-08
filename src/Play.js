@@ -5,6 +5,7 @@ class Play extends Phaser.Scene {
 
     init() {
         this.VEL = 175
+        this.food = this.game.food 
     }
 
     preload() {
@@ -46,6 +47,12 @@ class Play extends Phaser.Scene {
 
         //physics
         this.physics.add.collider(this.player, bgLayer)
+
+         //UI
+         this.foodText = this.add.text(0, 10, 'Food: ' + this.food, {
+            font: '32px Arial',
+            fill: '#ffffff'
+        }).setScrollFactor(0);
     }
 
     update() {
