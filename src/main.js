@@ -22,3 +22,5 @@ let config = {
 const game = new Phaser.Game(config)
 const gameCenterX = config.width/2
 const gameCenterY = config.height/2
+
+game.food = 0
